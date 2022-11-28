@@ -1,7 +1,5 @@
 package org.soulcodeacademy.empresa.domain;
 
-import org.hibernate.validator.constraints.br.CPF;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +13,10 @@ public class Dependente {
 
     @Column(nullable = false)
     private Integer idade;
+
+    @ManyToOne
+    @JoinColumn(name = "id_responsavel", nullable = false)
+    private Empregado responsavel;
 
     public Dependente() {}
 
@@ -46,5 +48,13 @@ public class Dependente {
 
     public void setIdade(Integer idade) {
         this.idade = idade;
+    }
+
+    public Empregado getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Empregado responsavel) {
+        this.responsavel = responsavel;
     }
 }
