@@ -16,6 +16,10 @@ public class Empregado {
     @Column(nullable = false)
     private Double salario;
 
+    @OneToOne // 1:1 Empregado-Endereço
+    @JoinColumn(name = "id_endereco", nullable = false) // renomeia a coluna da FK
+    private Endereco endereco;
+
 
     public Empregado() {}
 
@@ -56,5 +60,13 @@ public class Empregado {
 
     public void setSalario(Double salario) {
         this.salario = salario;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
